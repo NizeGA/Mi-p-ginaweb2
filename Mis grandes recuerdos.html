@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería con botón de Página Dos</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #e6f7ff; color: #333; }
+        header { background-color: #5c80bc; color: #fff; text-align: center; padding: 20px; }
+        footer { font-family: 'Georgia', serif; background-color: #2c5364; color: #ffffff; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; margin: 20px; }
+        .gallery div { display: flex; flex-direction: column; align-items: center; max-width: 250px; }
+        .gallery img { width: 250px; height: 250px; object-fit: cover; margin-bottom: 10px; border: 5px solid #333; }
+        .gallery p { font-size: 14px; margin-bottom: 10px; text-align: center; }
+        .buttons { display: flex; gap: 10px; }
+        .buttons button { padding: 10px 15px; background-color: #ff7b54; border: none; color: white; font-weight: bold; cursor: pointer; }
+        .buttons button:hover { background-color: #ff5722; }
+        a { text-decoration: none; color: white; }
+
+        .modal { display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); }
+        .modal-content { margin: auto; display: block; width: 80%; max-width: 700px; }
+        .close { position: absolute; top: 50px; right: 50px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+        /* Estilo de la Página Dos */
+        #paginaDos { display: none; padding: 20px; background-color: #fff8dc; }
+        #paginaDos img { width: 300px; height: auto; margin-bottom: 20px; border: 5px solid black; }
+        
+        /* Botón de "Ir a Página Dos" centrado al final de la galería */
+        .pagina-dos-button { text-align: center; margin-top: 20px; }
+        .pagina-dos-button button { padding: 10px 20px; background-color: #ff7b54; border: none; color: white; font-weight: bold; cursor: pointer; }
+        .pagina-dos-button button:hover { background-color: #ff5722; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Galería de mis recuerdos</h1>
+    <h2>Hecho por Nicolás Guerra Arbeláez</h2>
+    <h3>El objetivo de esta página es mostrar todos mis recuerdos de viajes, momentos importantes y aprendizajes</h3>
+</header>
+
+<section class="gallery">
+    <div>
+        <img id="image1" src="imagenes/6 - 0Nm5jm5.jpg" alt="Imagen de mi presentación de navidad">
+        <p>Presentación navideña en la escuela. Un día lleno de música y alegría.</p>
+        <div class="buttons">
+            <button onclick="openModal('image1')">Ver más</button>
+            <button onclick="addLike('likeCount1')">Me gusta</button>
+            <p id="likeCount1">0 Me gusta</p>
+        </div>
+    </div>
+    <div>
+        <img id="image2" src="imagenes/8 - 0j1N7AR.jpg" alt="Imagen de vacaciones en San Andrés">
+        <p>Vacaciones en San Andrés. Un lugar paradisíaco con playas increíbles.</p>
+        <div class="buttons">
+            <button onclick="openModal('image2')">Ver más</button>
+            <button onclick="addLike('likeCount2')">Me gusta</button>
+            <p id="likeCount2">0 Me gusta</p>
+        </div>
+    </div>
+    <div>
+        <img id="image3" src="imagenes/1 - 9EO8dk1.jpg" alt="Mi primera comunión">
+        <p>Mi primera comunión, un día muy especial en mi vida y para mi familia.</p>
+        <div class="buttons">
+            <button onclick="openModal('image3')">Ver más</button>
+            <button onclick="addLike('likeCount3')">Me gusta</button>
+            <p id="likeCount3">0 Me gusta</p>
+        </div>
+    </div>
+    <div>
+        <img id="image4" src="imagenes/2 - MtHIZ0h.jpg" alt="Montando caballo en el desfile de mi antiguo colegio">
+        <p>Desfile del colegio, montando a caballo con gran orgullo.</p>
+        <div class="buttons">
+            <button onclick="openModal('image4')">Ver más</button>
+            <button onclick="addLike('likeCount4')">Me gusta</button>
+            <p id="likeCount4">0 Me gusta</p>
+        </div>
+    </div>
+    <div>
+        <img id="image5" src="imagenes/3 - Rl6OJhz.jpg" alt="Primera vez montando bicicleta">
+        <p>Primera vez montando bicicleta. Un paso importante en mi infancia.</p>
+        <div class="buttons">
+            <button onclick="openModal('image5')">Ver más</button>
+            <button onclick="addLike('likeCount5')">Me gusta</button>
+            <p id="likeCount5">0 Me gusta</p>
+        </div>
+    </div>
+    <div>
+        <img id="image6" src="imagenes/4 - Lw7e0xG.jpg" alt="Jugando Fútbol">
+        <p>Jugando fútbol en el parque, una de mis pasiones desde pequeño.</p>
+        <div class="buttons">
+            <button onclick="openModal('image6')">Ver más</button>
+            <button onclick="addLike('likeCount6')">Me gusta</button>
+            <p id="likeCount6">0 Me gusta</p>
+        </div>
+    </div>
+    <div>
+        <img id="image7" src="imagenes/5 - yJIrkpD.jpg" alt="Mi primer disfraz de Halloween">
+        <p>Mi primer disfraz de Halloween. Me disfracé de superhéroe, ¡qué emoción!</p>
+        <div class="buttons">
+            <button onclick="openModal('image7')">Ver más</button>
+            <button onclick="addLike('likeCount7')">Me gusta</button>
+            <p id="likeCount7">0 Me gusta</p>
+        </div>
+    </div>
+
+    <!-- Botón de "Ir a Página Dos" al final de la galería -->
+    <div class="pagina-dos-button">
+        <button onclick="mostrarPaginaDos()">Ir a Página Dos</button>
+    </div>
+</section>
+
+<!-- Contenido de la "Página Dos" que aparece cuando el usuario hace clic en el botón -->
+<section id="paginaDos">
+    <h2>Página Dos - Información sobre mi nacimiento</h2>
+    <p>Yo nací en un hermoso día, rodeado de amor y alegría. Mi llegada fue un momento especial para mi familia y siempre será un recuerdo preciado.</p>
+    <img src="imagenes/7 - KgIRxCr.jpg" alt="Imagen de mi nacimiento"> <!-- Corrige la ruta de la imagen si es necesario -->
+    <button onclick="ocultarPaginaDos()">Volver a Galería</button> <!-- Botón para volver a la galería -->
+</section>
+
+<!-- Modal para mostrar las imágenes en grande -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<footer>
+    <p>© Alguna inquietud me pueden escrbir en mi correo guerran983@gmail.com.</p>
+</footer>
+
+<script>
+    // Función para abrir el modal con la imagen seleccionada
+    function openModal(imageId) {
+        const image = document.getElementById(imageId);
+        const modal = document.getElementById("myModal");
+        const modalImage = document.getElementById("modalImage");
+
+        modal.style.display = "block"; // Mostrar el modal
+        modalImage.src = image.src;    // Cargar la imagen seleccionada
+    }
+
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    // Función para sumar "Me gusta"
+    function addLike(likeId) {
+        let likeCount = document.getElementById(likeId);
+        let count = parseInt(likeCount.textContent) || 0;
+        likeCount.textContent = (count + 1) + " Me gusta";
+    }
+
+    // Función para mostrar la Página Dos
+    function mostrarPaginaDos() {
+        document.getElementById('paginaDos').style.display = 'block'; // Mostrar Página Dos
+        document.querySelector('.gallery').style.display = 'none';    // Ocultar la galería
+        console.log('Página Dos mostrada'); // Para verificar si la función se llama
+    }
+
+    // Función para ocultar la Página Dos y volver a la galería
+    function ocultarPaginaDos() {
+        document.getElementById('paginaDos').style.display = 'none';  // Ocultar Página Dos
+        document.querySelector('.gallery').style.display = 'flex';    // Mostrar la galería
+    }
+</script>
+
+</body>
+</html>
